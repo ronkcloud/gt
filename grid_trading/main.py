@@ -21,4 +21,4 @@ grid = SimpleGridTrading(
 
 trading_log, portofolio_history = grid.simulate_grid_trading(coin_data)
 grid.analyze_performance(portofolio_history, trading_log, coin_data)
-plot_grid_history(coin_data, trading_log, portofolio_history)
+# plot_grid_history(coin_data, trading_log, portofolio_history)
