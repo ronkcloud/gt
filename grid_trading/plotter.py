@@ -42,3 +42,26 @@ def plot_grid_history(coin_data, trading_log, portofolio_history):
 
     plt.tight_layout()
     plt.show()
+
+def plot_grid_history2(th):
+    plt.figure(figsize=(10, 5))
+
+    plt.plot(th['Date'], th['Closing Price ($)'], label='Price ($)', color='black')
+
+    buy_signals = th[th['Transaction Type'] == '🟢 BUY']
+    sell_signals = th[th['Transaction Type'] == '🔴 SELL']
+    
+    if not buy_signals.empty:
+        plt.scatter(buy_signals['Date'], buy_signals['Closing Price ($)'],
+                    color='green', marker='^', s=100, alpha=0.7, label='Buy Signal')
+    
+    if not sell_signals.empty:
+        plt.scatter(sell_signals['Date'], sell_signals['Closing Price ($)'],
+                    color='red', marker='v', s=100, alpha=0.7, label='Sell Signal')
+
+    plt.title('Price & Grid Trading Signals')
+    plt.ylabel('Portfolio Value ($)')
+    plt.legend()
+    plt.grid(True, alpha=0.3)
+    plt.tight_layout()
+    plt.show()
